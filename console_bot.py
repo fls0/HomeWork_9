@@ -20,7 +20,7 @@ def command_parser(command: str):
     command_lst = command.split()
     for k, v in COMMAND_LIST.items():
         if command_lst[0].lower() in v:
-            return k, command_lst[1:]
+            return k(command_lst[1:])
     return 'Unknown command'
 
 
@@ -44,7 +44,7 @@ def phone_handler(name):
     return 'Phone not found'
 
 def show_all(*args):
-    return print(NAME_PHONE_NUMBERS)
+    return NAME_PHONE_NUMBERS
 
 def bye_handler(*args):
     return 'Good bye!'
@@ -63,11 +63,9 @@ COMMAND_LIST = {
 def main():
     while True:
         user_input = input('>>>>')
-        func, data = command_parser(user_input)
-        result = func(data)
-        if result:
-            print(result)
-        if func == bye_handler:
+        result = command_parser(user_input)
+        print(result)
+        if result == 'Good bye!':
             break
 
 if __name__ == '__main__':
