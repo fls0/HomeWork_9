@@ -32,14 +32,15 @@ def add_handler(data):
     NAME_PHONE_NUMBERS[data[0].title()] = int(data[1])
     return f'Contact {data[0]} with number {data[1]} is succefully added'
 
+@input_error
 def change_handler(data):
-    if data[0] in NAME_PHONE_NUMBERS:
-        NAME_PHONE_NUMBERS[data[0]] = data[1]
-    return f'Phone was changed from {data[0]} to {data[1]}'
+    if data[0].title() in NAME_PHONE_NUMBERS:
+        NAME_PHONE_NUMBERS[data[0].title()] = data[1]
+    return f'Phone was changed'
 
 def phone_handler(name):
     if name[0].title() in NAME_PHONE_NUMBERS:
-        return f'{name[0]}, {NAME_PHONE_NUMBERS.get(name[0].title())}'
+        return f'{name[0].title()}, {NAME_PHONE_NUMBERS.get(name[0].title())}'
     return 'Phone not found'
 
 def show_all(*args):
