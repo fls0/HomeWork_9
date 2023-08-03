@@ -43,7 +43,7 @@ def phone_handler(name):
     return 'Phone not found'
 
 def show_all(*args):
-    print(NAME_PHONE_NUMBERS)
+    return print(NAME_PHONE_NUMBERS)
 
 def bye_handler(*args):
     return 'Good bye!'
